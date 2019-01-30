@@ -1,0 +1,1 @@
+g++ -o ../build/microphone_array/convert_raw_to_wav convert_raw_to_wav.c
