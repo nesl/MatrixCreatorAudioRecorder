@@ -15,10 +15,6 @@ cmake ..
 make -j4
 ```
 
-In addition, once you have created all the build files, please visit
-MatrixCreatorAudioRecorder/microphone_array and do the command 'make'
-This will create executables for commands that are required for utility commands - such as converting raw files into wav files.
-
 The main file that controls recording audio is created under build/mic_record_file
 Once it begins running, you have to hit ctrl+z to stop recording, otherwise it runs infinitely.
 Once you stop it, you'll have 9 different *.raw files.  Each one is numbered and corresponds to 

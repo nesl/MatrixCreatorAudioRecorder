@@ -17,4 +17,16 @@ add_executable(mic_record_pipe mic_record_pipe.cpp)
   target_link_libraries(mic_record_pipe matrix_creator_hal)
   target_link_libraries(mic_record_pipe ${CMAKE_THREAD_LIBS_INIT})
   target_link_libraries(mic_record_pipe ${GFLAGS_LIB})
+  
+add_executable(record_with_ntp record_with_ntp.cpp)
+  set_property(TARGET record_with_ntp PROPERTY CXX_STANDARD 11)
+  target_link_libraries(record_with_ntp matrix_creator_hal)
+  target_link_libraries(record_with_ntp ${CMAKE_THREAD_LIBS_INIT})
+  target_link_libraries(record_with_ntp ${GFLAGS_LIB})
+  
+add_executable(convert_raw_to_wav convert_raw_to_wav.cpp)
+  set_property(TARGET convert_raw_to_wav PROPERTY CXX_STANDARD 11)
+  target_link_libraries(convert_raw_to_wav matrix_creator_hal)
+  target_link_libraries(convert_raw_to_wav ${CMAKE_THREAD_LIBS_INIT})
+  target_link_libraries(convert_raw_to_wav ${GFLAGS_LIB})
 
