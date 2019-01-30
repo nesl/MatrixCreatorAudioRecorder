@@ -15,9 +15,9 @@ cmake ..
 make -j4
 ```
 
-Also be sure to check the commands.txt under matrix_listener/microphone_array
-For now, I skipped creating a makefile, but later I'll add one in for convenience.
-The commands are required for utility commands - such as converting raw files into wav files.
+In addition, once you have created all the build files, please visit
+MatrixCreatorAudioRecorder/microphone_array and do the command 'make'
+This will create executables for commands that are required for utility commands - such as converting raw files into wav files.
 
 The main file that controls recording audio is created under build/mic_record_file
 Once it begins running, you have to hit ctrl+z to stop recording, otherwise it runs infinitely.
