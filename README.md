@@ -8,7 +8,7 @@ The following commands download and compile all the examples:
 
 ```language-cpp
 sudo apt-get install cmake g++ git
-cd ~/matrix_listener
+cd ~/MatrixCreatorAudioRecorder
 mkdir build
 cd build
 cmake ..
