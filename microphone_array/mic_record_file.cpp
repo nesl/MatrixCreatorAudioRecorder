@@ -7,6 +7,10 @@
 // INCLUDE STATEMENTS //
 ///////////////////////
 
+#include <sys/stat.h>
+//#include <experimental/filesystem>
+//#include <boost/filesystem.hpp>
+
 // Google gflags parser
 #include <gflags/gflags.h>
 // Input/output stream class to operate on files
@@ -46,6 +50,8 @@ DEFINE_int32(duration, 5,
 // Grabs gain input from user
 DEFINE_int32(gain, -1, "Microphone Gain");  // Argument example: "--gain 5"
 
+DEFINE_int32(sequence, 0, "Sequence Number");  // Argument example: "--sequence 5"
+
 int main(int argc, char *agrv[]) {
   ////////////////////
   // INITIAL SETUP //
@@ -64,6 +70,7 @@ int main(int argc, char *agrv[]) {
   int sampling_rate = FLAGS_sampling_frequency;
   int seconds_to_record = FLAGS_duration;
   int gain = FLAGS_gain;
+  int sequence = FLAGS_sequence;
   
   //Set this to true if you want all 8 microphones (+1 beamformed),
   // otherwise just keep the beamformed mic.
@@ -72,6 +79,8 @@ int main(int argc, char *agrv[]) {
   /////////////////
   // MAIN SETUP //
   ///////////////
+
+  std::cout << "Setup Microphones" << std::endl;
 
   // Create MicrophoneArray object
   matrix_hal::MicrophoneArray microphone_array;
@@ -90,6 +99,33 @@ int main(int argc, char *agrv[]) {
   // Calculate and set up beamforming delays for beamforming
   microphone_array.CalculateDelays(0, 0, 1000,
                                    320 * 1000);  // These are default values
+                                   
+  // CREATE parent folder
+  //mode_t mode = 0777;
+  //mkdir("audio", mode);
+  
+  // Create current sequence folder (i.e. what session this is)
+  //std::string parent_folder = "audio";
+  int num_sequence = 0;
+  
+  
+  /*boost::filesystem::path pathname(parent_folder);
+  boost::filesystem::directory_iterator start(pathname);
+  boost::filesystem::directory_iterator end;*/
+  
+  /*for( ptr = start, ptr < end, ptr++) {
+    num_sequence++;
+  }*/
+  
+  /*for(auto &p: std::experimental::filesystem::directory_iterator(parent_folder)) {
+    num_sequence++;
+  }
+  std::cout << num_sequence << std::endl;
+  */
+  //std::string foldername = "audio/seq_" + std::to_string(sequence);
+  //mkdir(foldername.c_str(), mode);
+  
+  std::cout << " Created folders " << std::endl;
 
   ///////////////////////
   // FIR FILTER SETUP //
